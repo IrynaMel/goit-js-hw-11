@@ -2,7 +2,7 @@ import './sass/main.scss';
 import Notiflix from 'notiflix';
 import {fetchImagens} from'./js/fetch-images'
 import { renderGallery } from './js/gallery-render';
-import { scroll } from './js/scoll';
+// import { scroll } from './js/scoll';
 
 
 
