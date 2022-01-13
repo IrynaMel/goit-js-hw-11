@@ -18,8 +18,8 @@ let pageNumber = 1;
 form.addEventListener('submit', onFormSubmit)
 
 function onFormSubmit(e){
-
-    
+  pageNumber = 1;
+  loadBtn.classList.add('is-hidden')
    e.preventDefault()
   name = input.value.trim()
   gallery.innerHTML = ''
@@ -58,10 +58,16 @@ function onLoadMore(){
         renderGallery(data.hits)
         countFounding(data.totalHits)
         scroll()
-        if (data.hits.length<40){loadBtn.classList.add('is-hidden')}
+        if (data.hits.length<40){
+            loadBtn.classList.add('is-hidden');
+            alertEndOfSearch()
+        }
     }).catch(error => console.log(error))
 }
 function mistaceFunction(){Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.')}
 
 function countFounding(pages) {Notiflix.Notify.success(`Hooray! We found ${pages} images.`)}
 
+function alertEndOfSearch() {
+    Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.")
+  }
